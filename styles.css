@@ -7,13 +7,14 @@
 body {
 	/*background: lightgrey;*/
 	overflow-x: hidden;
+	overflow-y: scroll;
 }
 .container {
 	margin: 50px auto;
 	text-align: center;	
 	background: #EC9B3B;
-	min-height: 550px;
-	height: fit-content;
+	height: 410px;
+	transition: 0.4s ease-in-out;
 	width: 350px;
 	box-shadow: -1px 15px 30px -12px black;
 	border-radius: 25px;
@@ -25,11 +26,13 @@ body {
 }
 
 .textContent {
-	opacity: 0;
+	overflow: hidden;
 	border-radius: 0 0 25px 25px;
-	padding-top: 45px;
 	background: white;
-	transition: .4s ease-in-out;
+	height: 80px;
+	transition: 0.4s ease-in-out;
+	padding-top: 50px;
+
 }
 
 .skills {
@@ -54,7 +57,7 @@ a{
 	text-decoration: none;
 }
 #table {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	width : 351px;
 	text-align: center;
 	table-layout: fixed;
@@ -64,6 +67,8 @@ a{
 	padding: 15px;
 }
 #credits {
+	position: static;
+	bottom: 0;
 	color: #f1f1f1;
 	padding: 10px 0;
 	width:100vw;
@@ -72,6 +77,10 @@ a{
 	text-align: center;
 }
 
+.container:hover{
+	height: 620px;
+}
+
 .container:hover .textContent{
-	opacity: 1;
+	height: 297px;
 }
