@@ -6,61 +6,72 @@
 }
 body {
 	/*background: lightgrey;*/
+	overflow-x: hidden;
 }
 .container {
-	margin-top: 25px;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;	
+	margin: 50px auto;
+	text-align: center;	
 	background: #EC9B3B;
-	height: 600px;
+	min-height: 550px;
+	height: fit-content;
 	width: 350px;
 	box-shadow: -1px 15px 30px -12px black;
-		border-radius: 5%;
+	border-radius: 25px;
 }
 .imageContent {
 	margin-left: -50px;
 	height: 250px;
 	margin-bottom: 35px;
 }
+
 .textContent {
-	padding-top: 35px;
+	opacity: 0;
+	border-radius: 0 0 25px 25px;
+	padding-top: 45px;
 	background: white;
+	transition: .4s ease-in-out;
 }
+
 .skills {
-	margin-top: 0px;
+	margin-top: 15px;
+	font-size: 1.2rem;
 }
 .link{
-	
+	border-radius: 0 0 25px 25px;
+	cursor: pointer;
 	width: 330px;
 	padding: 10px;
 	letter-spacing: 2px;
 	color: white;
-
 }
 .link:hover {
 	background-color: #4BB543;
 }
+.link:hover a{
+	color: white;
+}
 a{
 	text-decoration: none;
 }
-a:hover {
-	color: white;
-}
 #table {
+	font-size: 0.8rem;
 	width : 351px;
 	text-align: center;
 	table-layout: fixed;
 	width: 100%;
 }
 #table td {
-	padding: 10px;
+	padding: 15px;
 }
 #credits {
 	color: #f1f1f1;
-	padding: 10px;
-		bottom: 0;
-		width: 330px;
+	padding: 10px 0;
+	width:100vw;
+	margin:0;
 	background: #929292;
 	text-align: center;
+}
+
+.container:hover .textContent{
+	opacity: 1;
 }
