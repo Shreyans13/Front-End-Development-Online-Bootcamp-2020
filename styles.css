@@ -7,6 +7,7 @@
 body {
 	/*background: lightgrey;*/
 	overflow-x: hidden;
+	overflow-y: scroll;
 }
 .container {
 	margin: 50px auto;
@@ -56,7 +57,7 @@ a{
 	text-decoration: none;
 }
 #table {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	width : 351px;
 	text-align: center;
 	table-layout: fixed;
@@ -77,9 +78,9 @@ a{
 }
 
 .container:hover{
-	height: 590px;
+	height: 620px;
 }
 
 .container:hover .textContent{
-	height: 267px;
+	height: 297px;
 }
