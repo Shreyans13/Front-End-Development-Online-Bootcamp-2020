@@ -4,10 +4,10 @@ var span = document.querySelectorAll("span")
 var cancel = document.getElementById("CancelAdd");
 var cancelEdit = document.getElementById("CancelEdit");
 
-// var editCancel = document.getElementById();
 console.log(span)
 document.getElementById("buttonAdd").addEventListener("click", function() {
   modal.style.display = "block";
+  randomColor()
 })
 span[0].onclick = function() {
   	modal.style.display = "none";
@@ -43,6 +43,7 @@ function getInput() {
 }
 
 function printData() {
+	randomColor()
 	document.getElementById('container').innerHTML = '';
 	for (var i = 0; i < data.length; i++) {
 		document.getElementById('container').innerHTML += `
@@ -90,4 +91,13 @@ function confirmEdit(index) {
 		data[editIndex].desc = dd;
 	}
 	printData()
+}
+
+function randomColor() {
+	var colorletters = 'ABCDEF0123456789';
+	var color = '#';
+	for (var i = 0; i < 6; i++) {
+		color += colorletters[Math.floor(Math.random() * 16)];
+	}
+	document.getElementById('navbar').style.background = color
 }
