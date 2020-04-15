@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDoList</title>
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h2>TODOLIST</h2>
+	</div>
+	<div id="container"></div>
+	<div id="bottom">
+		<button class="addButton" id="buttonAdd">Add Task</button>
+	</div>
+	
+	<div id="modelContainer">
+		<div class="modelContent">
+			<span class="close">&times;</span>
+			<label for="TaskName"><h4>Task name</h4></label>
+			<input type="text" name="" id="name" placeholder="Task Name">
+			<label for="TaskDescription"><h4>Description</h4></label>
+			<input type="textbox" name="" id="description" placeholder="Task Description">
+			<div class="modelButtons">
+				<br>
+				<button class="modelAddButton" id="confirmAdd">Add Task</button>
+				<button class="modelCancelButton" id="CancelAdd">Cancel Task</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="editModelContainer">
+		<div class="editModelContent">
+			<span class="close" id="closeBox">&times;</span>
+			<label for="TaskName">Task name</label>
+			<input type="text" name="" id="newName" placeholder="Task Name">
+			<label for="TaskDescription">Description</label>
+			<input type="textbox" name="" id="newDescription" placeholder="Task Description">
+			<h6>Leave blank for no change</h6>
+			<div class="modelButtons">
+				<br>
+				<button class="modelAddButton" id="confirmEdit" onclick="confirmEdit()">Edit Task</button>
+				<button class="modelCancelButton" id="CancelEdit">Cancel Edit</button>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="style.js"></script>
+</body>
+</html>
