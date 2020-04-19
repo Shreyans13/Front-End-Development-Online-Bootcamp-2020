@@ -31,7 +31,8 @@ function getInput() {
 	if (n.length>0 && d.length>0) {
 		var dataToAdd = {
 			name: n,
-			desc: d 
+			desc: d,
+			status: false
 		}
 		data.unshift(dataToAdd)
 		printData()
@@ -46,39 +47,71 @@ function printData() {
 	randomColor()
 	document.getElementById('container').innerHTML = '';
 	for (var i = 0; i < data.length; i++) {
-		document.getElementById('container').innerHTML += `
-			<div class="task">
-				<div class="content">
-					<h2>${data[i].name}</h2>
-					<br>
-					<p>${data[i].desc}</p>
+		if (!data[i].status){
+			document.getElementById('container').innerHTML += `
+				<div class="task" id=${i}>
+					<div class="content" id=${i}>
+						<i class="far fa-check-square box" id="checkbox ${i}" onclick="clicked(${i})"></i>
+						<span id="text" class="h2">${data[i].name}</span>
+						<br>
+						<p id="text">${data[i].desc}</p>
+					</div>
+					<div class="buttons">
+						<button class="editButton" id="edit" onclick="editData(${i})"><i class="far fa-edit"></i> Edit Task</button>
+						<button class="deleteButton" id="delete" onclick="deleteData(${i})"><i class="far fa-minus-square"></i> Delete Task</button>
+					</div>
 				</div>
-				<div class="buttons">
-					<button class="editButton" id="edit" onclick="editData(${i})">Edit Task</button>
-					<button class="deleteButton" id="delete" onclick="deleteData(${i})">Delete Task</button>
+			`;
+		} else {
+			document.getElementById('container').innerHTML += `
+				<div class="task" id=${i}>
+					<div class="content linethrough" id=${i}>
+						<i class="fas fa-check-square box" id="checkbox ${i}" onclick="clicked(${i})"></i>
+						<span id="text" class="h2">${data[i].name}</span>
+						<br>
+						<p id="text">${data[i].desc}</p>
+					</div>
+					<div class="buttons">
+						<button class="editButton" id="edit" onclick="editData(${i})"><i class="far fa-edit"></i> Edit Task</button>
+						<button class="deleteButton" id="delete" onclick="deleteData(${i})"><i class="far fa-minus-square"></i> Delete Task</button>
+					</div>
 				</div>
-			</div>
-		`;
+			`;
+		}
 	}
+
+
 		modal.style.display = "none";
 
 	// body...
 }
 document.getElementById("confirmAdd").addEventListener("click", getInput);
-function deleteData(index) {
+
+
+// function deleteData(index) {
+let deleteData = (index) => {
 	if (confirm("Are you sure you want to delete ?")) {
+		console.log(index)
+		// data[index].status = true;
+		// delete(data[index])
 		data.splice(index, 1);
+		// Array.prototype.map.call(document.querySelectorAll('.task'),(ob)=>{
+		// 	console.log("ob.id = "+ob.id)
+		// 	ob.className = (ob.id==index) ? "task none" : ob.className;
+		// })
 		printData()
 	}
 }
 var editIndex;
-function editData(index) {
+// function editData(index) {
+let editData = (index) => {
 	console.log(index)
 	editIndex = index;
 	editModel.style.display = "block";
 }
 
-function confirmEdit(index) {
+// function confirmEdit(index) {
+let confirmEdit = (index) => {
 	editModel.style.display = "none";
 	var nn = document.getElementById("newName").value
 	var dd = document.getElementById("newDescription").value
@@ -93,7 +126,8 @@ function confirmEdit(index) {
 	printData()
 }
 
-function randomColor() {
+// function randomColor() {
+let randomColor = () => {
 	var colorletters = 'ABCDEF0123456789';
 	var color = '#';
 	for (var i = 0; i < 6; i++) {
@@ -101,3 +135,35 @@ function randomColor() {
 	}
 	document.getElementById('navbar').style.background = color
 }
+
+
+let clicked = (index) => {
+	console.log(index)
+	data[index].status = !data[index].status;
+	printData()
+	// let change = (i) => {
+	// 	data[i].status = data[i].status ? "false" : "true"
+	// 	return "content linethrough"
+	// }
+	// let change2 = (i) => {
+	// 	data[i].status = data[i].status ? "false" : "true"
+	// 	return "content"
+	// }
+	// let c1 = () => {
+	// 	index.className = "fas fa-check-square box"
+	// 	Array.prototype.map.call(document.querySelectorAll('.content'),(ob)=>{
+	// 		ob.className = (ob.id==index.id.split(' ')[1]) ? change(ob.id) : ob.className
+
+	// 	})
+	// }
+	
+	// let c2 = () => {
+	// 	index.className = "far fa-check-square box"
+	// 	Array.prototype.map.call(document.querySelectorAll('.content'),(ob)=>{
+	// 		ob.className = (ob.id==index.id.split(' ')[1]) ? change2(ob.id) : ob.className
+	// 	})
+	// }
+	// (index.className=="far fa-check-square box")?c1():c2();
+
+}
+
