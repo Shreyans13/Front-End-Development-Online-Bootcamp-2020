@@ -92,8 +92,11 @@ body {
   	box-shadow:  6px 4px 15px 0px rgba(0, 0, 0, 0.38);
   	background-color: #fefefe;
 }
+
 .modelContent input,
-.editModelContent input {
+.editModelContent input,
+.modelContent textarea,
+.editModelContent textarea {
 	height: 30px;
 	width: 100%;
 	padding: 12px 20px;
@@ -103,8 +106,8 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
 }
-.modelContent input[type='textbox'],
-.editModelContent input[type='textbox']{
+.modelContent textarea,
+.editModelContent textarea{
 	height: 150px;
 }
 .modelAddButton{

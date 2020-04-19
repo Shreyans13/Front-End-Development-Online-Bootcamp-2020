@@ -4,7 +4,6 @@ var span = document.querySelectorAll("span")
 var cancel = document.getElementById("CancelAdd");
 var cancelEdit = document.getElementById("CancelEdit");
 
-console.log(span)
 document.getElementById("buttonAdd").addEventListener("click", function() {
   modal.style.display = "block";
   randomColor()
@@ -34,6 +33,8 @@ function getInput() {
 			desc: d,
 			status: false
 		}
+		document.getElementById('name').value = ''
+		document.getElementById('description').value = ''
 		data.unshift(dataToAdd)
 		printData()
 	}
