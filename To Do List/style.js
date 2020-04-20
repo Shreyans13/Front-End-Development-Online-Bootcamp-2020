@@ -116,14 +116,14 @@ let confirmEdit = (index) => {
 	editModel.style.display = "none";
 	var nn = document.getElementById("newName").value
 	var dd = document.getElementById("newDescription").value
-	console.log(nn)
-	console.log(dd)
 	if (nn.length > 0) {
 		data[editIndex].name = nn;
 	}
 	if (dd.length > 0) {
 		data[editIndex].desc = dd;
 	}
+	document.getElementById('name').value = ''
+		document.getElementById('description').value = ''
 	printData()
 }
 
