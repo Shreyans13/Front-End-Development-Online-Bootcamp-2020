@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="number" id="a" placeholder="A">
+    <input type="number" id="b" placeholder="B">
+
+    <button id="sum">Sum</button>
+    <button id="mul">Mul</button>
+
+    <div id="res"></div>
+
+    <script>
+        document.getElementById('sum').addEventListener('click', sumData)
+        document.getElementById('mul').addEventListener('click', mulData)
+        
+        function inputData(){
+            var a1 = parseInt(document.getElementById('a').value)
+            var b1 = parseInt(document.getElementById('b').value)
+
+            if(a1 && b1){
+                return {a:a1, b:b1}
+            }else{
+                alert('Number to input karo')
+            }
+            
+        }
+
+        function sumData(){
+            var res1 = inputData()
+            document.getElementById('res').innerHTML = `
+                <p>Sum of ${res1.a} and ${res1.b} is = ${res1.a+res1.b} </p>
+            `
+        }
+
+        function mulData(){
+            var res2 = inputData()
+            document.getElementById('res').innerHTML = `
+                <p>Mul of ${res2.a} and ${res2.b} is = ${res2.a*res2.b} </p>
+            `
+        }
+    </script>
+</body>
+</html>

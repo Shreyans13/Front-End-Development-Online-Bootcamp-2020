@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="number" id="age" placeholder="Enter Age">
+    <input type="number" id="p" placeholder="Enter Phy">
+    <input type="number" id="c" placeholder="Enter Che">
+    <input type="number" id="m" placeholder="Enter Mth">
+    <button id="submit">Add Data</button>
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Phy</td>
+                <td>Che</td>
+                <td>Mth</td>
+                <td>Total</td>
+                <td>% </td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody id="res">
+
+        </tbody>
+    </table>
+
+    <script>
+        // [{},{},{}]
+        var students = [
+            { name:'s1', age:23, marks:{ p:34, c: 45, m: 56} },
+            { name:'s2', age:32, marks:{ p:23, c: 85, m: 56} },
+            { name:'s3', age:63, marks:{ p:54, c: 15, m: 67} },
+            { name:'s4', age:83, marks:{ p:67, c: 35, m: 96} },
+            { name:'s5', age:26, marks:{ p:23, c: 55, m: 46} },
+            { name:'s6', age:21, marks:{ p:74, c: 75, m: 16} },
+            { name:'s7', age:13, marks:{ p:84, c: 85, m: 56} },
+            { name:'s8', age:43, marks:{ p:14, c: 15, m: 16} }
+        ]
+
+        document.getElementById('submit').addEventListener('click', addData)
+
+        function addData(){
+            var name1 = document.getElementById('name').value
+            var age1 = parseInt(document.getElementById('age').value)
+            var p1 = parseInt(document.getElementById('p').value)
+            var c1 = parseInt(document.getElementById('c').value)
+            var m1 = parseInt(document.getElementById('m').value)
+
+            if(name1.length>0 && age1 && p1 && c1 && m1){
+                var datatoadd = { 
+                    name: name1, 
+                    age: age1, 
+                    marks:{ p:p1, c:c1, m: m1}
+                }
+                students.unshift(datatoadd)
+                printData()
+            }else{
+                alert('Kuch to input karo')
+            }
+
+            
+        }
+
+
+        function printData(){
+            document.getElementById('res').innerHTML = ''
+            for(var i=0;i<students.length;i++){
+                document.getElementById('res').innerHTML += `
+                    <tr>
+                        <td>${students[i].name}</td>
+                        <td>${students[i].age}</td>
+                        <td>${students[i].marks.p}</td>
+                        <td>${students[i].marks.c}</td>
+                        <td>${students[i].marks.m}</td>
+                        <td>${ ( students[i].marks.p + students[i].marks.c + students[i].marks.m )}</td>
+                        <td>${ (((students[i].marks.p + students[i].marks.c + students[i].marks.m)/300)*100).toFixed(2) }</td>
+                        <td><button onClick="deleteData(${i})">Delete</button></td>
+                    </tr>
+                `
+            }
+        }
+
+        function deleteData(index){
+            if(confirm('Paakkaa karna ?')){
+                students.splice(index,1)
+                printData()
+            }
+        }
+
+        printData()
+        
+    </script>
+</body>
+</html>
