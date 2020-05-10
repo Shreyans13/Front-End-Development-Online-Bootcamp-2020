@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row" id="data">
+            
+        </div>
+    </div>
+    
+    <script>
+
+        fetch('https://api.github.com/users').then(res=>res.json()).then(data=>{
+            console.log(data)
+            data.map(obj=>{
+                document.getElementById('data').innerHTML += `
+                    <div class="col-md-3">
+                        <div class="card p-2 m-1 text-center">
+                            <img src="${obj.avatar_url}" width="100%" alt="">
+                            <p>${obj.login}</p>
+                        </div>
+                    </div>
+                `
+            })
+        }).catch(e=>{
+            console.log(e)
+        })
+    </script>
+</body>
+</html>
