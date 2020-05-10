@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="india">
+        <div v-if="isVisible">
+            <h1>Hellow</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae tempora dolorem quisquam amet itaque labore, corporis ullam beatae qui dolor magnam, quia doloribus et recusandae deserunt in illum expedita officiis.</p>
+        </div>
+        <div v-else>
+            <h1>India</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsam incidunt quis eius voluptate ullam, assumenda nisi eos quas esse dignissimos rerum laboriosam modi corporis voluptates, laborum error dicta id.</p>
+        </div>
+        <p>{{msg}}</p>
+        <p>{{name}}</p>
+        <p>Sum of {{a}} and {{b}} = {{a+b}}</p>
+        <p>{{isVisible}}</p>
+        <p>{{arr}}</p>
+        <p v-for="(item,index) in arr">
+            {{index}} : {{item}}
+        </p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#india',
+            data:()=>({
+                msg:'Hello from Vue',
+                name:'Vrijraj',
+                a: 34,
+                b:56,
+                isVisible: true,
+                arr:[56,78,34,59,90]
+            }),
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+</html>

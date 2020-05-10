@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5" id="papu">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Contact Dir</h1>
+                <!-- <p>{{name}}</p>
+                <p>{{mb}}</p> -->
+                <hr>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-5">
+                <input type="text" v-model="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="col-md-5">
+                <input type="number" v-model="mb" class="form-control" placeholder="Mobile">
+            </div>
+            <div class="col-md-2">
+                <button v-on:click="addData" class="btn btn-primary">Add Contact</button>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Name</td>
+                            <td>Mobile</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item,index) in contacts" :key="index">
+                            <td>{{index+1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.number}}</td>
+                            <td><button v-on:click="deleteData(index)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let app = new Vue({
+            el:'#papu',
+            data:()=>({
+                name:'',
+                mb:'',
+                contacts:[]
+            }),
+            methods: {
+                addData(){
+                    if(this.name.length>0 && this.mb.length>0){
+                        let data= {
+                            name:this.name,
+                            number: this.mb
+                        }
+                        this.contacts.unshift(data)
+                    }
+                },
+                deleteData(index){
+                    if(confirm('Pakkkkaaaaaaaa!')){
+                        this.contacts.splice(index, 1)
+                    }
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

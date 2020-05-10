@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="kuchbi">
+
+        <button v-on:click="incData">Inc Data</button>
+        <button v-on:click="decData">Dec Data</button>
+        <button v-on:click="isVisible=!isVisible">Show/Hide Content</button>
+        {{c}}
+        <div v-if="isVisible">
+            <h1>Hello</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error repudiandae accusantium quo ipsam, reiciendis harum suscipit illum ipsa nostrum pariatur nam corrupti necessitatibus eaque consequatur perferendis expedita officiis nobis laborum!</p>
+        </div>
+        <div v-else>
+            <h1>India</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium soluta laborum, debitis quibusdam voluptatem nulla cupiditate consequatur sint dolorem, doloribus culpa aut accusamus consectetur vel delectus blanditiis architecto? Qui, accusamus?</p>
+        </div>
+
+        <p>{{msg}}</p>
+        <p>{{name}}</p>
+        <p>Sum of {{a}} and {{b}} = {{a+b}}</p>
+        <p>{{isVisible}}</p>
+        <p>{{arr}}</p>
+        <p v-for="(ele, index) in arr">
+           {{index}}: {{ele}}
+        </p>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#kuchbi',
+            data:()=>({
+                msg:'Hello From Vue',
+                name:'Vrijraj Singh',
+                a:34,
+                b: 45,
+                c:78,
+                isVisible: false,
+                arr:[12,56,89,14,65]
+            }),
+            methods: {
+                incData(){
+                    console.log('CAALING')
+                    this.c = this.c+1
+                },
+                decData(){
+                    this.c =this.c-1
+                }
+            },
+        })
+    </script>
+</body>
+</html>
